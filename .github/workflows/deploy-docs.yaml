@@ -20,9 +20,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: mkdir
+      run: mkdir docs
     - name: Generate docs
       run: |
-        cat << 'EOF' > index.html
+        cat << 'EOF' > docs/index.html
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -38,6 +40,8 @@ jobs:
         EOF
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./docs
 
   deploy:
     environment:
