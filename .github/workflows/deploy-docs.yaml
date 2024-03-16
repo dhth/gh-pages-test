@@ -21,6 +21,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: Download ecsv
+      run: |
+        curl -OL https://github.com/dhth/ecsv/releases/download/v0.4.0/ecsv_0.4.0_linux_amd64.tar.gz
+        tar -xzvf ecsv_0.4.0_linux_amd64.tar.gz
+        ls -la
     - name: mkdir
       run: mkdir docs
     - name: Generate docs
