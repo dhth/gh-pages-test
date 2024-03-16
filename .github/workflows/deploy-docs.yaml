@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  ECSV_VERSION: 0.4.1
+  ECSV_VERSION: v0.4.1
 
 jobs:
   build:
