@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  ECSV_VERSION: v0.4.1
+  ECSV_VERSION: 0.4.1
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Download ecsv
       run: |
-        curl -s -OL https://github.com/dhth/ecsv/releases/download/${{ env.ECSV_VERSION }}/ecsv_${{ env.ECSV_VERSION }}_linux_amd64.tar.gz
+        curl -s -OL https://github.com/dhth/ecsv/releases/download/v${{ env.ECSV_VERSION }}/ecsv_${{ env.ECSV_VERSION }}_linux_amd64.tar.gz
         tar -xzvf ecsv_${{ env.ECSV_VERSION }}_linux_amd64.tar.gz
     - name: mkdir
       run: mkdir docs
