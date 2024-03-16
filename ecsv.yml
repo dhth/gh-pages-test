@@ -1,0 +1,16 @@
+env-sequence: ["qa", "staging"]
+systems:
+- key: service-a
+  envs:
+  - name: qa
+    aws-profile: default
+    aws-region: eu-central-1
+    cluster: 1brd-qa
+    service: service-a-qa
+    container-name: service-a-qa
+  - name: staging
+    aws-profile: default
+    aws-region: eu-central-1
+    cluster: 1brd-staging
+    service: service-a-staging
+    container-name: service-a-staging

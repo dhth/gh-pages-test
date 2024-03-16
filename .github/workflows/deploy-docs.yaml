@@ -15,6 +15,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  ECSV_VERSION: 0.4.1
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,27 +26,13 @@ jobs:
       uses: actions/checkout@v4
     - name: Download ecsv
       run: |
-        curl -OL https://github.com/dhth/ecsv/releases/download/v0.4.0/ecsv_0.4.0_linux_amd64.tar.gz
-        tar -xzvf ecsv_0.4.0_linux_amd64.tar.gz
-        ./ecsv -help
+        curl -s -OL https://github.com/dhth/ecsv/releases/download/${{ env.ECSV_VERSION }}/ecsv_${{ env.ECSV_VERSION }}_linux_amd64.tar.gz
+        tar -xzvf ecsv_${{ env.ECSV_VERSION }}_linux_amd64.tar.gz
     - name: mkdir
       run: mkdir docs
-    - name: Generate docs
+    - name: Generate doc
       run: |
-        cat << 'EOF' > docs/index.html
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script src="https://cdn.tailwindcss.com"></script>
-            <title>ecsv</title>
-        </head>
-        <body class="bg-slate-900 text-xl">
-            <h1 class="text-stone-50 text-2xl mb-4 font-bold">ecsv</h1>
-        </body>
-        </html>
-        EOF
+        ./ecsv -config-file=./ecsv.yml -format=html > docs/index.html
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
