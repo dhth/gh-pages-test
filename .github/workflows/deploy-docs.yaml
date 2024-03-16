@@ -25,7 +25,7 @@ jobs:
       run: |
         curl -OL https://github.com/dhth/ecsv/releases/download/v0.4.0/ecsv_0.4.0_linux_amd64.tar.gz
         tar -xzvf ecsv_0.4.0_linux_amd64.tar.gz
-        ls -la
+        ./ecsv -help
     - name: mkdir
       run: mkdir docs
     - name: Generate docs
